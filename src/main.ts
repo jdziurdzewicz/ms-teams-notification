@@ -67,9 +67,12 @@ async function run(): Promise<void> {
         core.debug(error)
       })
   } catch (error) {
-    console.log(error)
-    core.setFailed(error.message)
+    let errorMessage = "Failed to do something exceptional";
+    if (error instanceof Error) {
+    errorMessage = error.message;
   }
+  console.log(errorMessage);
+}
 }
 
 run()
